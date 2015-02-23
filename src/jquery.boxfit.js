@@ -78,7 +78,10 @@
         }
         current_step = 0;
         inner_span = span;
+        
+        var oldCSSDisplay = $(this).css('display');
         $(this).css('display', 'table');
+        
         inner_span.css('display', 'table-cell');
         if (settings.align_middle) {
           inner_span.css('vertical-align', 'middle');
@@ -105,6 +108,10 @@
 
         // go back one step
         inner_span.css('font-size', parseInt(inner_span.css('font-size'), 10) - settings.step_size);
+        
+        // Restore display CSS property
+        $(this).css('display', oldCSSDisplay);
+        
         return $(this);
       }
     });
